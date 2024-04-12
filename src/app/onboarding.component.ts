@@ -85,8 +85,12 @@ export class OnboardingComponent implements OnInit, OnDestroy {
       this.error = 'Pls enter user token';
       return;
     }
-    console.log((window as any).PW);
-    (window as any).PW.Onboarding(this.form.value).mount('#pw-oboarding');
+    const { token, mode } = this.form.value;
+
+    (window as any).PW.Onboarding({
+      token,
+      mode,
+    }).mount('#pw-oboarding');
   }
 
   ngOnDestroy(): void {
