@@ -57,8 +57,12 @@ export class OnboardingComponent implements OnInit, OnDestroy {
     this.registerScript(
       'https://merchant-area-test.vercel.app/sdk/onboarding/onboarding.sdk.js',
       (PW: any) => {
-        console.log('load script success');
         this.loaded = true;
+        const { token, mode } = this.form.value;
+        (window as any).PW.Onboarding({
+          token,
+          mode,
+        }).mount('#pw-oboarding');
       }
     );
   }
