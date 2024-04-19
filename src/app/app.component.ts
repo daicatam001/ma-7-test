@@ -90,4 +90,6 @@ import { OnboardingComponent } from './onboarding.component';
 })
 export class AppComponent {
   title = 'angular-project';
+
+  console.log(localStorage.getItem('authtoken'))
 }
