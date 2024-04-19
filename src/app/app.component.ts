@@ -26,6 +26,7 @@ import { OnboardingComponent } from './onboarding.component';
       </nav>
       <main class="admin__main">
         <!-- <app-onboarding></app-onboarding> -->
+        this is auth token : {{authtoken}}
         <router-outlet></router-outlet>
       </main>
     </div>
@@ -91,5 +92,5 @@ import { OnboardingComponent } from './onboarding.component';
 export class AppComponent {
   title = 'angular-project';
 
-  console.log(localStorage.getItem('authtoken'))
+ authtoken = localStorage.getItem('authtoken')
 }
