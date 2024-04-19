@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { OnboardingComponent } from './onboarding.component';
 
@@ -26,7 +26,6 @@ import { OnboardingComponent } from './onboarding.component';
       </nav>
       <main class="admin__main">
         <!-- <app-onboarding></app-onboarding> -->
-        this is auth token : {{authtoken}}
         <router-outlet></router-outlet>
       </main>
     </div>
@@ -89,8 +88,19 @@ import { OnboardingComponent } from './onboarding.component';
     `,
   ],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'angular-project';
+  async ngOnInit() {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
 
- authtoken = localStorage.getItem('authtoken')
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        localStorage.setItem('authtoken', 'auth-tken');
+        console.log('set token');
+        resolve(true);
+      }, 1000);
+    });
+    console.log('end');
+  }
 }
